@@ -1,0 +1,15 @@
+<h1> The Game </h1>
+
+@for(g of guessList; track g.id){
+    <div class="row">
+        @for(c of g.colors; track c){
+            <div class="circle" [style.background-color]="c"></div>
+        }
+        <app-bool-pgia [colors]="g.colors"> colors </app-bool-pgia>
+    </div>
+}
+
+<button (click) = tryGuess() [disabled]="isGuessMode"> Guess </button>
+@if(isGuessMode){
+    <app-new-try (try)="try()" > </app-new-try>
+}

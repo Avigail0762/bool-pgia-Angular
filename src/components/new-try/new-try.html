@@ -1,0 +1,17 @@
+
+<!-- this is the colors that you need to choose fron them -->
+<div class="row">
+@for(c of gameService.colorList; track c){
+    <div class="chooseColors" [style.background-color]="c" (click)="fillCircle(c)"></div>
+}
+</div>
+
+<!-- this is the circles that you need to fill them with some color -->
+<div class="row">
+@for(c of guessColor; track c){
+    <div  class="circle" [style.background-color]="c"></div>
+}
+</div>
+
+<button (click)="cancel()"> Cancel </button>
+<button (click)="saveTry()"> Try </button>
