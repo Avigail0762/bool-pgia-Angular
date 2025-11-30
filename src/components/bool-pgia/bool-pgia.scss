@@ -1,0 +1,15 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  margin: 0 8px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f4ff;
+  border: 1px solid #d8deff;
+  font-weight: 500;
+  font-size: 16px;
+}

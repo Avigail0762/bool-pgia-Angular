@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { GameService } from '../../services/game-service';
 
 @Component({
@@ -10,18 +10,21 @@ import { GameService } from '../../services/game-service';
 
 export class BoolPgia {
   constructor(public gameService: GameService) {
-    this.bool = this.gameService.bool(this.colors);
-    this.pgia = this.gameService.pgia(this.colors);
   }
 
   @Input()
   colors: string[] = []
+  rightColors: string[] = []
+
+  winner = output<boolean>()
 
   bool: number = 0;
   pgia: number = 0;
 
-  ngOnInit() {
+  ngOnChanges() {
     this.bool = this.gameService.bool(this.colors);
     this.pgia = this.gameService.pgia(this.colors);
+    if(this.bool===4)
+      this.winner.emit(true)
   }
 }

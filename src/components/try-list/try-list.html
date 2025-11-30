@@ -1,15 +1,22 @@
 <h1> The Game </h1>
 
+
+@if(!isWin){
 @for(g of guessList; track g.id){
-    <div class="row">
-        @for(c of g.colors; track c){
-            <div class="circle" [style.background-color]="c"></div>
-        }
-        <app-bool-pgia [colors]="g.colors"> colors </app-bool-pgia>
-    </div>
+<div class="row">
+    @for(c of g.colors; track c){
+    <div class="circle" [style.background-color]="c"></div>
+    }
+    <app-bool-pgia [colors]="g.colors" (winner)="win()"> colors </app-bool-pgia>
+</div>
 }
 
-<button (click) = tryGuess() [disabled]="isGuessMode"> Guess </button>
+<button (click)=tryGuess() [disabled]="isGuessMode || guessList.length >=10"> Guess </button>
 @if(isGuessMode){
-    <app-new-try (try)="try()" > </app-new-try>
+<app-new-try (try)="try()"> </app-new-try>
+}
+}
+
+@else{
+<h1> You are the winner!!! </h1>
 }

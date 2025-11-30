@@ -6,9 +6,13 @@ import { BoolPgiaModel } from '../models/boolPgiaModel';
 })
 export class GameService {
 
-  colorList: string[] = ["red", "black", "blue", "green", "yellow", "pink"]
-  rightList: string[] = [];
+  colorList: string []=['#C77DFF','#FFE66D','#6BCB77','#4D96FF','#FFA36C','#FF6B6B']
+  rightList: string[] = [this.colorList[Math.floor(Math.random() * 6)]
+    , this.colorList[Math.floor(Math.random() * 6)],
+  this.colorList[Math.floor(Math.random() * 6)],
+  this.colorList[Math.floor(Math.random() * 6)]];
   guessList: BoolPgiaModel[] = [];
+
 
   getRightList(): string[] {
     for (let i = 0; i < 4; i++) {
@@ -17,6 +21,7 @@ export class GameService {
     }
     return this.rightList;
   }
+
   getAll(): BoolPgiaModel[] {
     return this.guessList;
   }
@@ -43,20 +48,28 @@ export class GameService {
     for (let i = 0; i < this.rightList.length; i++)
       if (this.rightList[i] === colors[i])
         count++;
-    console.log(count);
-    
+    console.log(this.rightList);
+
     return count;
   }
 
+
   pgia(colors: string[]): number {
     let count = 0;
-    for (let i = 0; i < this.rightList.length; i++){
-      for (let j = 0; j < colors.length; j++){
-          if (this.rightList[i] === colors[j] && i!=j)
-        count++;
+    let flags = [false, false, false, false];
+    for (let i = 0; i < this.rightList.length; i++) {
+      for (let j = 0; j < colors.length; j++) {
+        if (this.rightList[i] === colors[j] && i != j && !flags[j]) {
+          console.log("i = " +i +" and j = " +j);         
+          count++;
+          flags[j] = true;
+          break;
+        }
+        if(this.rightList[i] === colors[j] && i===j) //תחליף ל'בול' שבפונקציה נפרדת
+          flags[j] = true
+      }
     }
-    }
-    console.log(count);
+    console.log(this.rightList);
     return count;
   }
 }

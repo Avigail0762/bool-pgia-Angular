@@ -1,10 +1,68 @@
-.circle{
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-}
-.chooseColors{
+.chooseColors {
     width: 40px;
     height: 40px;
     border-radius: 50%;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+.chooseColors:hover {
+    transform: scale(1.12);
+    border-color: #999;
+}
+:host {
+    display: block;
+}
+
+.row {
+    display: flex;
+    gap: 12px;
+    margin: 15px 0;
+    justify-content: center;
+    align-items: center;
+}
+
+/* עיגולי בחירה */
+.circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    border: 2px solid #d4d4d4;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.circle:hover {
+    transform: scale(1.12);
+    border-color: #999;
+}
+
+.button-area {
+    display: flex;
+    justify-content: center;
+    /* ממורכז */
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* כפתורים */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #4f7fff, #6fa2ff);
+    color: #fff;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+button:hover:not([disabled]) {
+    transform: translateY(-3px);
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
 }
