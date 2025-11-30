@@ -1,7 +1,16 @@
 <h1> The Game </h1>
 
+@if(guessList.length ==10){
+  <div class="win-page">
+    <div class="win-card">
+      <div class="icon">⌛</div>
+      <h1>Oops... you have failed:(</h1>
+      <p>Don't give up... try a new game! </p>
+    </div>
+  </div>
+}
 
-@if(!isWin){
+@else if(!isWin){
 @for(g of guessList; track g.id){
 <div class="row">
     @for(c of g.colors; track c){
@@ -17,7 +26,8 @@
 }
 }
 
-@else{
+
+@else if(isWin){
   <div class="win-page">
     <div class="win-card">
       <div class="icon">🏆</div>
@@ -26,3 +36,5 @@
     </div>
   </div>
 }
+
+
